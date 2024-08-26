@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-FRUITS=("APPLE" "BANANA" "ORANGE" "KIWI")
+FRUITS=("APPLE" , "BANANA" , "ORANGE" , "KIWI")
 
 echo "Frist fruit is: ${FRUITS[0]}"
 
