@@ -17,7 +17,7 @@ Y="\e[33m"
  CHECK_ROOT(){
     if [ $USERID -ne 0 ]
     then
-        echo -e "$R Please run this script with root privelleges $N" |tee -a $LOG_FILE
+        echo -e "$R Please run this script with root privelleges $N" | tee -a $LOG_FILE
         exit 1
     fi    
  }
@@ -48,7 +48,7 @@ fi
 #sh 15-loops.sh git mysql postfix nginx
 for package in $@
 do 
-  dnf list installed $package $LOG_FILE
+  dnf list installed $package &>>$LOG_FILE
   if [ $? -ne 0 ]
   then 
       echo "$package is not installed, going to installed it...." | tee -a $LOG_FILE
