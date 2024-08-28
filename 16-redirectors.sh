@@ -32,7 +32,16 @@ Y="\e[33m"
     fi        
  }
 
+ USAGE(){
+       echo -e "$R USAGE:: $N sudo sh 16-redirectors.sh package1 package2..."
+       exit 1
+ }
+
 CHECK_ROOT
+if [ $# -eq 0 ]
+then 
+    USAGE
+fi
 
 #sh 15-loops.sh git mysql postfix nginx
 for package in $@
@@ -45,6 +54,6 @@ do
 
       VALIDATE $? "Installing $pacakge"
    else
-       echo -e "$package $Y is already installed .. nothing to do $N" &>>$LOG_FILE
+       echo -e "$package  is already $Y installed .. nothing to do $N" &>>$LOG_FILE
    fi 
 done 
