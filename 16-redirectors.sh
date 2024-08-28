@@ -17,7 +17,7 @@ Y="\e[33m"
  CHECK_ROOT(){
     if [ $USERID -ne 0 ]
     then
-        echo -e "$R Please run this script with root privelleges $N" |tee -a &>>$LOG_FILE
+        echo -e "$R Please run this script with root privelleges $N" |tee -a $LOG_FILE
         exit 1
     fi    
  }
@@ -25,10 +25,10 @@ Y="\e[33m"
  VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 is... $R FAILED $N" | tee -a &>>$LOG_FILE
+        echo -e "$2 is... $R FAILED $N" | tee -a $LOG_FILE
         exit 1
     else 
-        echo -e "$2 is...$G SUCCESS $N" | tee -a &>>$LOG_FILE
+        echo -e "$2 is...$G SUCCESS $N" | tee -a $LOG_FILE
     fi        
  }
 
@@ -37,7 +37,7 @@ Y="\e[33m"
        exit 1
  }
 
-echo "Script started executing at: $(date)" | tee -a $>>$LOG_FILE
+echo "Script started executing at: $(date)" | tee -a $LOG_FILE
 
 CHECK_ROOT
 if [ $# -eq 0 ]
@@ -48,14 +48,14 @@ fi
 #sh 15-loops.sh git mysql postfix nginx
 for package in $@
 do 
-  dnf list installed $package &>>$LOG_FILE
+  dnf list installed $package $LOG_FILE
   if [ $? -ne 0 ]
   then 
-      echo "$package is not installed, going to installed it...." | tee -a &>>$LOG_FILE
+      echo "$package is not installed, going to installed it...." | tee -a $LOG_FILE
       dnf install $package -y
 
       VALIDATE $? "Installing $pacakge"
    else
-       echo -e "$package  is already $Y installed .. nothing to do $N" | tee -a &>>$LOG_FILE
+       echo -e "$package  is already $Y installed .. nothing to do $N" | tee -a $LOG_FILE
    fi 
 done 
