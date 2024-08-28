@@ -2,6 +2,10 @@
 
 USERID=$(id -u)
  #echo "User id is: $USERID"
+R="\e[31m"
+G="\e[32m"
+G="\e[0m"
+
 
  CHECK_ROOT(){
     if [ $USERID -ne 0 ]
@@ -10,14 +14,13 @@ USERID=$(id -u)
         exit 1
     fi    
  }
-
  VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 is...FAILED"
+        echo -e "$2 is... $R FAILED $N"
         exit 1
     else 
-        echo "$2 is...SUCCESS"
+        echo "$2 is...$G SUCCESS $N"
     fi        
  }
 
