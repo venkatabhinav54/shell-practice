@@ -11,4 +11,4 @@ echo "Total of $NUMBER1 and $NUMBER2 is: $SUM"
 
 echo "Multiple of $NUMBER1 and $NUMBER2 is: $MUL"
 
-echo "Devide by $NUMBER! and $NUMBER2 is: $DEV"
+echo "Devide by $NUMBER1 and $NUMBER2 is: $DEV"
