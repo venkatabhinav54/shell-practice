@@ -37,14 +37,14 @@ CHECK_ROOT
 #sh 15-loops.sh git mysql postfix nginx
 for package in $@
 do 
-  dnf list installed $package
+  dnf list installed $package &>>$LOG_FILE
   if [ $? -ne 0 ]
   then 
-      echo "$package is not installed, going to installed it...."
+      echo "$package is not installed, going to installed it...." &>>$LOG_FILE
       dnf install $package -y
 
       VALIDATE $? "Installing $pacakge"
    else
-       echo "$package is already installed .. nothing to do"
+       echo -e "$package $Y is already installed .. nothing to do $N" &>>$LOG_FILE
    fi 
 done 
