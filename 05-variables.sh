@@ -15,8 +15,8 @@
 
 #!bin/bash
 echo "Please enter your username::"
-read USERNAME 
+read -s USERNAME 
 echo "Username entered is:: $USERNAME"
 echo "Please entered Password::"
-read PASSWORD
+read -s PASSWORD
 echo "Password entered is: $PASSWORD"
